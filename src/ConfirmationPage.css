@@ -1,0 +1,141 @@
+.confirmation-container {
+  padding: 40px;
+  text-align: center;
+  color: white;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.confirmation-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.passenger-info {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.plane-body {
+  margin-top: 40px;
+  padding: 30px 20px;
+  border: 5px solid #444;
+  border-radius: 40px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.seat-group {
+  display: flex;
+  gap: 10px;
+}
+
+.aisle {
+  width: 40px;
+  height: 60px;
+}
+
+.seat-box {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  font-size: 11px;
+  position: relative;
+  transition: transform 0.2s;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+.seat-box:hover {
+  transform: scale(1.07);
+}
+
+.solo {
+  background-color: #6aa728;
+  color: white;
+}
+
+.family {
+  background-color: #dc3545;
+  color: white;
+}
+
+.empty {
+  background-color: #777;
+  color: white;
+  opacity: 0.4;
+}
+
+.seat-label {
+  font-size: 11px;
+}
+
+.passenger-name {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.disability-symbol {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 14px;
+  color: yellow;
+  font-weight: bold;
+}
+
+.washroom-row {
+  display: flex;
+  justify-content: center;
+}
+
+.washroom-seat {
+  width: 180px;
+  height: 50px;
+  background-color: #444;
+  color: white;
+  font-size: 22px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+}
+.exit-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.exit-label {
+  background-color: #b30000;
+  color: white;
+  padding: 10px 30px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  text-align: center;
+}
