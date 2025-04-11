@@ -3,11 +3,13 @@ import "./App.css";
 import { db } from "./firebaseConfig";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import ConfirmationPage from "./ConfirmationPage";
+import SeatMapPage from "./SeatMapPage";
 
 const cities = ["Delhi", "Mumbai", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Ahmedabad", "Pune", "Jaipur", "Lucknow"];
 
 const App = () => {
   const [step, setStep] = useState(1);
+  const [showSeatMap, setShowSeatMap] = useState(false);
   const [fromCity, setFromCity] = useState("");
   const [toCity, setToCity] = useState("");
   const [selectedFlight, setSelectedFlight] = useState("");
@@ -45,7 +47,6 @@ const App = () => {
 
     try {
       await addDoc(collection(db, "passengerData"), bookingData);
-      alert("Passenger details saved successfully!");
       setStep(4);
     } catch (error) {
       console.error("Error saving passenger data:", error);
@@ -62,7 +63,7 @@ const App = () => {
 
       <div className="app-container">
         <h1 className="main-title">Flight Seat Allocating System</h1>
-        <p className="subtitle">Plan your journey with smart seat allocation & dynamic pricing</p>
+        <p className="subtitle">Plan your journey with smart seat allocation </p>
 
         {step === 1 && (
           <div className="location-section">
@@ -91,44 +92,70 @@ const App = () => {
           </div>
         )}
 
-        {step === 2 && (
-          <div className="flight-selection">
-            <h2 className="section-title">Step 2: Select a Flight</h2>
+{step === 2 && (
+  <div className="flight-selection">
+    <h2 className="section-title">Select a Flight</h2>
 
-            <div className="flight-cards-container">
-              {flightOptions.map((flight) => (
-                <label key={flight.id} className={`flight-card ${selectedFlight === flight.id ? "selected" : ""}`}>
-                  <input type="radio" name="flight" value={flight.id} onChange={() => setSelectedFlight(flight.id)} />
-                  <div className="flight-info">
-                    <strong>{flight.name}</strong>
-                    <span>{flight.time}</span>
-                  </div>
-                </label>
-              ))}
-            </div>
-
-            <div className="travel-type-container">
-              <p className="travel-question">Are you traveling?</p>
-              <label>
-                <input type="radio" name="travelType" value="solo" onChange={() => {
-                  setTravelType("solo");
-                  setPassengers([{ name: "", age: "", gender: "", disability: "" }]);
-                }} /> Solo
-              </label>
-              <label>
-                <input type="radio" name="travelType" value="family" onChange={() => {
-                  setTravelType("family");
-                  setPassengers([
-                    { name: "", age: "", gender: "", disability: "" },
-                    { name: "", age: "", gender: "", disability: "" }
-                  ]);
-                }} /> With Family
-              </label>
-
-              <button onClick={() => setStep(3)} disabled={!selectedFlight || !travelType} className="button">Next</button>
-            </div>
+    <div className="flight-cards-container">
+      {flightOptions.map((flight) => (
+        <label key={flight.id} className={`flight-card ${selectedFlight === flight.id ? "selected" : ""}`}>
+          <input type="radio" name="flight" value={flight.id} onChange={() => setSelectedFlight(flight.id)} />
+          <div className="flight-info">
+            <strong>{flight.name}</strong>
+            <span>{flight.time}</span>
           </div>
-        )}
+        </label>
+      ))}
+    </div>
+
+    <div className="travel-type-container">
+      <p className="travel-question">Are you traveling?</p>
+
+      {/* ✅ Wrapped radio options in a flex container */}
+      <div className="travel-type-options">
+        <label className="travel-type-option">
+          <input
+            type="radio"
+            name="travelType"
+            value="solo"
+            onChange={() => {
+              setTravelType("solo");
+              setPassengers([{ name: "", age: "", gender: "", disability: "" }]);
+            }}
+          />
+          Solo
+        </label>
+
+        <label className="travel-type-option">
+          <input
+            type="radio"
+            name="travelType"
+            value="family"
+            onChange={() => {
+              setTravelType("family");
+              setPassengers([
+                { name: "", age: "", gender: "", disability: "" },
+                { name: "", age: "", gender: "", disability: "" }
+              ]);
+            }}
+          />
+          With Family
+        </label>
+      </div>
+
+      {/* ✅ "Next" button on its own line, centered */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <button
+          onClick={() => setStep(3)}
+          disabled={!selectedFlight || !travelType}
+          className="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
         {step === 3 && (
           <div className="passenger-form">
@@ -161,15 +188,25 @@ const App = () => {
         )}
 
         {step === 4 && (
-          <ConfirmationPage
-          passengerData={passengers}
-          flightData={{
-            departure: fromCity,
-            destination: toCity,
-            name: flightOptions.find(f => f.id === selectedFlight)?.name,
-            travelType: travelType // 👈 add this line
-          }}
-        />
+          <>
+            {!showSeatMap ? (
+              <ConfirmationPage
+                passengerData={passengers}
+                flightData={{
+                  departure: fromCity,
+                  destination: toCity,
+                  name: flightOptions.find(f => f.id === selectedFlight)?.name,
+                  travelType: travelType
+                }}
+                onShowSeatMap={() => setShowSeatMap(true)}
+              />
+            ) : (
+              <SeatMapPage
+                passengerData={passengers}
+                travelType={travelType}
+              />
+            )}
+          </>
         )}
       </div>
     </>

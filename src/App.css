@@ -24,62 +24,36 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
-  padding: 30px 20px;
-  margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  gap: 24px;
   max-width: 500px;
-  margin-inline: auto;
-  font-size: 18px;
-  color: #ffffff;
+  margin: 50px auto;
+  padding: 100px 100px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
 }
 
 .passenger-form input,
 .passenger-form select {
   margin-bottom: 20px;
-  width: 100%;
-  padding: 14px;
+  width: 95%;
+  padding: 10px;
   font-size: 18px;
   border: none;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  color: #000000;
 }
 
 .passenger-form input::placeholder {
-  color: #cccccc;
+  color: #000000;
 }
 
 .passenger-form select {
-  color: #ffffff;
-}
-
-.checkbox-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  margin-top: 10px;
-  color: #ffffff;
-}
-
-.add-button {
-  margin-top: 20px;
-  background-color: #28a745;
-}
-
-.add-button:hover {
-  background-color: #218838;
-}
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
+  color: #000000;
 }
 
 .button,
@@ -94,8 +68,11 @@ body, html {
   font-size: 16px;
 }
 
-.button:hover {
-  background-color: #0056b3;
+button:hover,
+.add-button:hover {
+  background: linear-gradient(135deg, #3399ff, #053f79);
+  transform: translateY(-2px) scale(1.02);
+
 }
 
 /* Adjust radio & checkbox scaling */
@@ -117,9 +94,10 @@ input[type="checkbox"] {
 .flight-card {
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid transparent;
-  padding: 15px 20px;
+  padding: 16px 100px;
   border-radius: 12px;
-  color: rgb(10, 156, 234);
+  font-size: 20px;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
@@ -160,29 +138,41 @@ input[type="checkbox"] {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
-  color: rgb(10, 156, 234);
+  color: rgb(0, 0, 0);
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .travel-type-options {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
+  margin-bottom: 20px; /* space before next button */
+  flex-wrap: wrap;
 }
 
 .travel-type-option {
   display: flex;
   align-items: center;
-  font-size: 18px;
-  color: rgb(10, 156, 234);
-  gap: 10px;
+  font-size: 20px; /* made bigger */
+  color: rgb(0, 0, 0);
+  gap: 12px;
   cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, transform 0.2s;
 }
 
-.travel-type-option input[type="radio"] {
-  transform: scale(1.3);
-  cursor: pointer;
+.travel-type-option:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
+
+.travel-type-container button {
+  display: block;
+  margin: auto auto;
+}
+
 
 
 .flight-selection {
@@ -213,14 +203,15 @@ input[type="checkbox"] {
   text-align: center;
   font-size: 48px;
   font-weight: bold;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 .subtitle {
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
   margin-bottom: 40px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
@@ -228,12 +219,15 @@ input[type="checkbox"] {
 .section-title {
   font-size: 30px;
   margin-bottom: 28px;
+  color: rgb(0, 0, 0);
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .label {
   display: block;
   margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
   font-weight: 600;
 }
 
@@ -244,6 +238,7 @@ select {
   border: none;
   border-radius: 8px;
   margin-bottom: 20px;
+  font-weight: 550;
   width: 250px;
   max-width: 100%;
 }

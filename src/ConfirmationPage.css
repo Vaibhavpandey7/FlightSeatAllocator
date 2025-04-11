@@ -1,24 +1,25 @@
 .confirmation-container {
   padding: 40px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   max-width: 1000px;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
+  font-size: 22px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 .confirmation-title {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 20px;
-  color: #00ffcc;
+  color: #d80d0d;
 }
 
 .passenger-info {
   margin: 10px 0;
-  font-size: 18px;
-  color: #ffffff;
+  font-size: 22px;
+  color: #000000;
 }
 
 .plane-body {
@@ -139,3 +140,4 @@
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
   text-align: center;
 }
+
