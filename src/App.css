@@ -75,7 +75,7 @@ button:hover,
 
 }
 
-/* Adjust radio & checkbox scaling */
+
 input[type="radio"],
 input[type="checkbox"] {
   transform: scale(1.3);
